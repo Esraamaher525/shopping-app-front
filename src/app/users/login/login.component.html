@@ -1,0 +1,40 @@
+<section class="p-3 container">
+    <div class="wrap-login100" >
+        <form [formGroup]="loginUser" (ngSubmit)="submit()">
+            <span class="login100-form-logo">
+                <i class="fa fa-cart-plus logo-color"></i>
+            </span>
+            <span class="login100-form-title p-b-34 p-t-27">
+                Log in
+            </span>
+            <div class="row pb-3">
+                <div class="col-12 mb-2">
+                    <input class="form-control" placeholder="please enter your email" formControlName="email" required>
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted ||(f.email.invalid &&(f.email.dirty || f.email.touched))">                  
+                        <div *ngIf="f.email.errors?.required">
+                            email is required
+                        </div>
+                        <div *ngIf="f.email.errors?.email">
+                            email is invalid
+                         </div>                    
+                    </div>    
+                </div>
+                <div class="col-12 mt-3 mb-4">
+                    <input class="form-control" placeholder="please enter your password" formControlName="password" required>
+                    <div class='text-danger font-weight-bold' font-weight-bold *ngIf= "submitted || (f.password.invalid && (f.password.dirty || f.password.touched))">
+                        <div *ngIf="f.password.errors?.required">
+                           password is required
+                        </div>
+                    </div>
+                </div>
+                <div class='text-danger font-weight-bold'>
+                    {{invalid}}
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-warning text-white col-3">login</button>
+                    <button class="btn btn-link text-white" type="button" routerLink="/user/register">Register</button>    
+                </div>              
+            </div>
+        </form>
+    </div>
+</section>

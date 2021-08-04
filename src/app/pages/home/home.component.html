@@ -1,0 +1,37 @@
+<app-nav-bar-category></app-nav-bar-category>
+<!-- start section for slider -->
+<ngb-carousel >
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="../../../assets/images/img1.jpg" width="80%" height="550px" alt="Random first slide">
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="../../../assets/images/img2.jpg" width="80%" height="550px" alt="Random second slide">
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="../../../assets/images/img3.jpg" width="80%" height="550px" alt="Random third slide">
+      </div>
+    </ng-template>
+</ngb-carousel>
+<!-- end section for slider -->
+<!-- start section for sale -->
+<div class="sale-div bg-blue">
+  <div class="pt-45">Sale 50% on all products</div>
+  <button class="btn btn-warning text-white" routerLink="/user/register">Sign Up</button>
+  <button class="btn btn-link text-white" routerLink="/user/login">Login</button>
+</div>
+<!-- end section for sale -->
+<!-- start section for shop -->
+<div class="shop-now text-center mb-25">
+  <div>
+    <h3 class="color-red">Lorem Ipsum</h3>
+    <p class="color-red">It is a long established fact that a reader will be distracted by the readable content of a page when looking </p>
+    <button (click)="shopNow()" class="btn btn-warning text-white">shop now</button>
+  </div>
+</div>
+<!-- end section for div -->
+<app-footer></app-footer>

@@ -1,0 +1,101 @@
+<section class="p-3 container">
+    <div class="wrap-login100" >
+        <form [formGroup]="enterProduct" (ngSubmit)="submit()">
+            <span class="login100-form-logo">
+                <i class="fa fa-cart-plus logo-color"></i>
+            </span>
+            <span class="login100-form-title pt-2">
+               Enter pruduct
+            </span>
+            <div class="row pb-3">
+                <div class="col-12 mb-2">
+                    <label class="text-white mb-1">category</label>
+                    <select class="form-select" formControlName="category" aria-label="Default select example">
+                        <option selected>please select category</option>
+                        <option *ngFor="let category of categoryData" [ngValue]="category">{{category}}</option>
+                      </select>
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted ||(f.category.invalid &&(f.category.dirty || f.category.touched))">                  
+                        <div *ngIf="f.category.errors?.required">
+                            category is required
+                        </div> 
+                    </div>            
+                </div>
+                <div class="col-12 mb-2">
+                    <label class="text-white mb-1">Available Sizes</label>
+                    <ng-multiselect-dropdown
+                        (onSelect)="changemulti($event)"
+                        formControlName="sizes"
+                        [placeholder]="'select sizes'"
+                        [settings]="dropdownSettings"
+                        [data]="sizeData"
+                        >
+                    </ng-multiselect-dropdown>
+                </div>
+                <div class="col-12 mb-2">
+                    <label class="text-white mb-1">Available colors</label>
+                    <ng-multiselect-dropdown
+                        (onSelect)="changemulti($event)"
+                        formControlName="colors"
+                        [placeholder]="'select colors'"
+                        [settings]="dropdownSettings"
+                        [data]="colorsData"
+                        id="colors"
+                    >
+                   
+                    </ng-multiselect-dropdown>
+                    <!-- <input type="color" formControlName="colors" class="form-control"  value="#ff0000" (change)="changeColor($event)">
+                    <span *ngFor="let color of selectedColors">               
+                        <span>{{color}}</span>
+                        <span>,</span>
+                    </span> -->
+                </div>
+                <div class="col-12 mb-2">
+                    <label class="text-white mb-1">type</label>
+                    <input type="text" formControlName="type" class="form-control" placeholder="enter type" > 
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted ||(f.type.invalid &&(f.type.dirty || f.type.touched))">                  
+                        <div *ngIf="f.type.errors?.required">
+                            type is required
+                        </div> 
+                    </div>                      
+                </div>
+                <div class="row mb-2">
+                    <div class="col-3 ">
+                        <label class="text-white mb-1">price Befor Sale</label>
+                        <input type="text" formControlName="priceBeforSale" class="form-control" placeholder="enter price before" >                      
+                    </div>
+                    <div class="col-3">
+                        <label class="text-white mb-1">price After Sale</label>
+                        <input type="text" formControlName="priceAfterSale" class="form-control" placeholder="enter price after" >                      
+                    </div>
+                    <div class="col-4">
+                        <label class="text-white mb-1">AvailableInStock</label>
+                        <input type="number" formControlName="AvailableInStock" class="form-control" placeholder="numbers in stock">   
+                        <div class='text-danger font-weight-bold' *ngIf= "submitted ||(f.AvailableInStock.invalid &&(f.AvailableInStock.dirty || f.AvailableInStock.touched))">                  
+                            <div *ngIf="f.AvailableInStock.errors?.required">
+                                AvailableInStock is required
+                            </div> 
+                        </div>                      
+                    </div>
+                    <div class="col-2 form-check mt-4">
+                        <input class="form-check-input" type="checkbox" formControlName="hasSale">   
+                        <label class="form-check-label text-white">has sale</label> 
+                        <div class='text-danger font-weight-bold' *ngIf= "submitted ||(f.hasSale.invalid &&(f.hasSale.dirty || f.hasSale.touched))">                  
+                            <div *ngIf="f.hasSale.errors?.required">
+                                hasSale is required
+                            </div> 
+                        </div>                 
+                    </div>
+                </div>          
+              
+                <!-- upload image -->
+                <div class="col-12 mb-2 ">
+                    <label class="text-white mb-1">image</label>          
+                    <input type="file" class="form-control" name="files" multiple="multiple" (change)="handleFile($event)">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-warning text-white col-3">enter product</button>
+                </div>  
+            </div>
+        </form>
+    </div>
+</section>

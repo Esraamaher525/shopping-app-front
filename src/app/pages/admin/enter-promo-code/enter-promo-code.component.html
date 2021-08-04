@@ -1,0 +1,56 @@
+<section class="p-3 container">
+    <div class="wrap-login100" >
+        <form [formGroup]="enterPromoCode" (ngSubmit)="submit()">
+            <span class="login100-form-logo">
+                <i class="fa fa-cart-plus logo-color"></i>
+            </span>
+            <span class="login100-form-title p-b-34 p-t-27">
+               Enter promo Code
+            </span>
+            <div class="row pb-3">
+                <div class="col-12 mb-2">
+                    <label class="text-white mb-1">promo code</label>
+                    <input class="form-control" placeholder="please enter promo Code" type="text" formControlName="promoCode" required>
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted ||(f.promoCode.invalid &&(f.promoCode.dirty || f.promoCode.touched))">                  
+                        <div *ngIf="f.promoCode.errors?.required">
+                            promoCode is required
+                        </div>                  
+                    </div>
+                    <div class='text-danger font-weight-bold' *ngIf="dublicatedPromo">
+                        promo code is dublicated
+                    </div>    
+                </div>
+                <div class="col-12 mb-2">
+                    <label class="text-white mb-1">start date</label>
+                    <input class="form-control" type="date" placeholder="please enter  startDate" formControlName="startDate" required>
+                    <div class='text-danger font-weight-bold' font-weight-bold *ngIf= "submitted || (f.startDate.invalid && (f.startDate.dirty || f.startDate.touched))">
+                        <div *ngIf="f.startDate.errors?.required">
+                            startDate is required
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-12 mb-2">
+                    <label class="text-white mb-1">end date</label>
+                    <input class="form-control" type="date" placeholder="please enter endDate" formControlName="endDate" required>
+                    <div class='text-danger font-weight-bold' font-weight-bold *ngIf= "submitted || (f.endDate.invalid && (f.endDate.dirty || f.endDate.touched))">
+                        <div *ngIf="f.endDate.errors?.required">
+                            endDate is required
+                        </div>
+                    </div>
+                </div>           
+                <div class="col-12 mb-2">
+                    <label class="text-white mb-1">discount Value</label>
+                    <input class="form-control" placeholder="please enter discountValue" type="text" formControlName="discountValue" required>
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted ||(f.discountValue.invalid &&(f.discountValue.dirty || f.discountValue.touched))">                  
+                        <div *ngIf="f.discountValue.errors?.required">
+                            discountValue is required
+                        </div>                  
+                    </div>    
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-warning text-white col-4">enter</button>
+                </div>              
+            </div>
+        </form>
+    </div>
+</section>

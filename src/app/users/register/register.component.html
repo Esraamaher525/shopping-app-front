@@ -1,0 +1,75 @@
+<section class="p-3 container">
+    <div class="wrap-login100" >
+        <form [formGroup]="register" (ngSubmit)="submit()">
+            <span class="login100-form-logo">
+                <i class="fa fa-cart-plus logo-color"></i>
+            </span>
+            <span class="login100-form-title p-b-34 p-t-27">
+                Register
+            </span>
+            <div class="row pb-3">
+                <div class="col-12 mb-2">
+                    <input class="form-control" placeholder="enter your name" formControlName="name" minlength="2" maxlength="20" required>
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted || (f.name.invalid && (f.name.dirty || f.name.touched))">
+                        <div *ngIf="f.name.errors?.minlength">
+                            min length is 2
+                        </div>
+                        <div *ngIf="f.name.errors?.maxlength">
+                            max length is 20
+                        </div>
+                        <div *ngIf="f.name.errors?.required">
+                        name is required
+                        </div>
+                    </div>
+             
+                </div>
+                <div class="col-12 mb-2">
+                    <input class="form-control" placeholder="enter your email" formControlName="email" required >
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted ||(f.email.invalid && (f.email.dirty || f.email.touched))">                  
+                        <div *ngIf="f.email.errors?.required">
+                            email is required
+                        </div>
+                        <div *ngIf="f.email.errors?.email">
+                            email is invalid
+                        </div>                    
+                    </div>     
+                    <div *ngIf="userBefor" class='text-danger font-weight-bold'>
+                        email is dublicated
+                    </div>     
+                </div>
+                <div class="col-12 mb-2">
+                    <input class="form-control"placeholder="enter your password" formControlName="password" minlength="6" maxlength="8" required>
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted ||(f.password.invalid && (f.password.dirty || f.password.touched))">
+                        <div *ngIf="f.password.errors?.required">
+                        password is required
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <input class="form-control" placeholder="enter your birthDate" type="date" formControlName="birthDate">
+                </div>            
+                <div class="col-12 mb-2">
+                    <input class="form-control"placeholder="enter your phone"  formControlName="phone" maxlength="15">
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted|| (f.phone.invalid && (f.phone.dirty || f.phone.touched))">                
+                        <div *ngIf="f.phone.errors?.minlength">
+                            min length is 11
+                        </div>              
+                    </div>
+                </div>
+                <div class="col-12 mb-2 form-check ml-12">
+                    <input class="form-check-input" type="checkbox" formControlName="isAdmin" required>
+                    <label class="text-light font-weight-bold text-lowercase ml-2 form-check-label">isAdmin</label>
+                    <div class='text-danger font-weight-bold' *ngIf= "submitted || (f.isAdmin.invalid && (f.isAdmin.dirty || f.isAdmin.touched))">                  
+                        <div *ngIf="f.isAdmin.errors?.required">
+                            isadmin  is required
+                        </div>                 
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-warning text-white col-3">Register</button>
+                    <button class="btn btn-link text-white" type="button" routerLink="/user/login">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

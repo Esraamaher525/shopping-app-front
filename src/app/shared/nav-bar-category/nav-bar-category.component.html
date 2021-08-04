@@ -1,0 +1,23 @@
+<!-- start section for category -->
+<section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav mx-auto" *ngIf="categories">
+              <a class="nav-item nav-link" *ngFor="let category of categories" (click)="navigate(category)">{{category}}</a>
+              <a class="nav-item nav-link" (click)="navigate('sale')">sale</a>
+              <a class="nav-item nav-link " routerLink="/user/profile" *ngIf="Auth">Profile</a>
+              <a class="nav-item nav-link" routerLink="/user/login" *ngIf="!Auth">Login</a>
+              <a class="nav-item nav-link" routerLink="/user/register" *ngIf="!Auth">Register</a>
+            
+          </div>
+        </span>
+        <span class="mx-4">
+            <a>
+                <span class="mx-3" *ngIf="totalPrice>0">{{totalPrice}}</span>
+                <span class="counter" *ngIf="count>0">{{count}}</span>
+                <i class="fas fa-cart-plus mt-2 fs-25 pointer"></i>
+            </a>
+        </span>
+    </nav>   
+</section>
+<!-- end section for category -->
