@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,7 +13,7 @@ export class NavBarCategoryComponent implements OnInit {
   Auth:boolean=true;
   count:number;
   totalPrice:number;
-  constructor(private _Products:ProductsService,private router:Router,private _userService:UserService) {
+  constructor(private _Products:ProductsService,private router:Router,private _userService:UserService,private _ngZone: NgZone) {
     _Products.getAllProduct().subscribe(res=>{
       this.categories=[];
       res.data.forEach((el,i) => {
@@ -37,5 +37,8 @@ export class NavBarCategoryComponent implements OnInit {
       this.totalPrice=total;
     })
   }
+  showCart(){
+    this.router.navigate(['/home/cart']);
+   }
 
 }

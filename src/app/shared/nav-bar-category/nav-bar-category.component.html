@@ -8,11 +8,10 @@
               <a class="nav-item nav-link " routerLink="/user/profile" *ngIf="Auth">Profile</a>
               <a class="nav-item nav-link" routerLink="/user/login" *ngIf="!Auth">Login</a>
               <a class="nav-item nav-link" routerLink="/user/register" *ngIf="!Auth">Register</a>
-            
           </div>
         </span>
         <span class="mx-4">
-            <a>
+            <a (click)="showCart()" >
                 <span class="mx-3" *ngIf="totalPrice>0">{{totalPrice}}</span>
                 <span class="counter" *ngIf="count>0">{{count}}</span>
                 <i class="fas fa-cart-plus mt-2 fs-25 pointer"></i>

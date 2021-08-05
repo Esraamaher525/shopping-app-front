@@ -1,2 +1,57 @@
-<p>cart works!</p>
-{{products | json}}
+<app-nav-bar-category></app-nav-bar-category>
+<!-- start show data of category -->
+<section *ngIf="products" class="row mx-0 center-elements">
+    <div class="card col-md-6 m-3" *ngFor="let product of products" style="width: 18rem;">
+      <ngb-carousel *ngIf="product?.products?.length>1" >
+        <ng-template ngbSlide *ngFor="let image of product.products ">
+          <div class="picsum-img-wrapper">
+            <img [src]="image"  height="250px" width="100%" alt="slide">
+          </div>
+        </ng-template>
+      </ngb-carousel>
+        <img onerror="this.src='assets/images/default.jpg';" *ngIf="product.products.length==1" class="card-img-top" [src]="product.products[0]" height="250px" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title text-center color-blue font-italic">{{product.type}}</h5>
+          <div class="card-text">
+            <span class="font-weight-bold color-blue">sizes available: </span>
+            <span *ngFor="let size of product.sizes" class="gray-color">{{size}},</span>
+          </div>
+          <div class="card-text">
+            <span class="font-weight-bold color-blue">colors available: </span>
+            <span *ngFor="let color of product.colors" class="gray-color">{{color}},</span>
+          </div>
+          <div class="card-text">
+            <span class="font-weight-bold color-blue">has Sale:</span>
+            <span class="gray-color">{{product.hasSale}}</span>
+          </div>
+          <div class="card-text">
+            <span class="font-weight-bold color-blue">price Befor Sale:</span>
+            <span class="gray-color">{{product.priceBeforSale}}</span>
+          </div>
+          <div class="card-text">
+            <span class="font-weight-bold color-blue">price After Sale:</span>
+            <span class="gray-color">{{product.priceAfterSale}}</span>
+          </div>
+          <div class="card-text mb-2">
+            <span class="font-weight-bold color-blue">Available In Stock:</span>
+            <span class="gray-color">{{product.AvailableInStock}}</span>
+          </div>
+      
+        </div>
+      </div>
+      <div>
+          <form [formGroup]="enterPromoCodeF" (ngSubmit)="enterPromoCode()">
+            <input class="form-control" formControlName="promoCode"/>
+            <div *ngIf="promocodeInvalid" class="text-danger font-weight-bold">
+                {{promocodeInvalid}}
+            </div>
+            <button class="btn btn-success">done</button>
+          </form>     
+      </div>
+      <div class="text-center">
+        <a class="btn btn-warning text-white" (click)="checkout()">check-out</a>
+      </div>
+</section>
+<!-- end show data of category -->
+<app-footer ></app-footer>
+

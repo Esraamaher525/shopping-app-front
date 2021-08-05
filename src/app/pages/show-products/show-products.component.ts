@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 @Component({
@@ -10,7 +10,7 @@ export class ShowProductsComponent implements OnInit {
   filterProduct=[];
   count:number=0;
   totalPrice:number=0;
-  constructor(private route: ActivatedRoute,private _Products:ProductsService,private router:Router) {debugger }  
+  constructor(private route: ActivatedRoute,private _Products:ProductsService,private router:Router) { }  
   ngOnInit(): void {
     const category = this.route.snapshot.paramMap.get('category');
     if(category=='sale'){
@@ -58,8 +58,7 @@ export class ShowProductsComponent implements OnInit {
     this.totalPrice += Number(product.priceAfterSale);
     this._Products.changeTotalPrice(this.totalPrice);
     this._Products.setSelectedProduct(product)
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.navigate(['/home/cart'])
+   
   }
   ngOnDestroy() {
     this.filterProduct=[]

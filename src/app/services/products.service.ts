@@ -22,21 +22,32 @@ export class ProductsService {
   public subjectCount=new BehaviorSubject(0);
   observableCount=this.subjectCount.asObservable();
   changeCount(value){
-    (value>0) ? this.subjectCount.next(value): console.log("no items");
+    debugger
+    this.subjectCount.next(value)
+    //(value>=0) ? this.subjectCount.next(value): console.log("no items");
   }
   //total price
   public totalPriceSubject=new BehaviorSubject(0);
   observableTotalPrice=this.totalPriceSubject.asObservable();
   changeTotalPrice(value){
-    (value>0) ? this.totalPriceSubject.next(value): console.log("no items");
+    debugger
+    (value>=0) ? this.totalPriceSubject.next(value): console.log("no items");
   }
   // selected product
   setSelectedProduct(product){
-    debugger
     this.products.push(product);
   }
   getSelectedProduct(){
-    debugger
     return this.products;
   }
+  //promo code
+  testPromoCode(promocode){
+    return this._http.get(`${environment.commonURL}/promo-code/${promocode}`)
+
+  }
+  //check out
+  checkOut(data){
+    return this._http.post(`${environment.commonURL}/check-out`,data)
+  }
+
 }

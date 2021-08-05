@@ -12,8 +12,8 @@ const routes: Routes = [
   {path:'',redirectTo:"home",pathMatch:"full"},
   {path:'home',children:[
     {path:'',component:HomeComponent},
-    {path:':category',component:ShowProductsComponent},
-    {path:'cart',component:CartComponent}
+    {path:'cart',component:CartComponent},
+   {path:':category',component:ShowProductsComponent},
   ]},
   {path:"user",children:[
     {path:"login",component:LoginComponent},
@@ -24,7 +24,7 @@ const routes: Routes = [
     {path:"enter-product",component:EnterProductComponent},
     {path:"enter-promo-code",component:EnterPromoCodeComponent},
 
-  ]}
+  ]},
 ];
 
 @NgModule({
